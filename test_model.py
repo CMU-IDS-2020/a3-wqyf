@@ -43,29 +43,6 @@ def get_distance(lon1, lat1, lon2, lat2):
 
   return R * c
 
-#origonal map
-def dmap(data, lat, lon, zoom):
-    st.write(pdk.Deck(
-        map_style="mapbox://styles/mapbox/light-v9",
-        initial_view_state={
-            "latitude": lat,
-            "longitude": lon,
-            "zoom": zoom,
-            "pitch": 50,
-        },
-        layers=[
-            pdk.Layer(
-                "HexagonLayer",
-                data=data,
-                get_position=["pickup_longitude","pickup_latitude"],
-                radius=100,
-                elevation_scale=4,
-                elevation_range=[0, 1000],
-                pickable=True,
-                extruded=True,
-            ),
-        ]
-    ))
 
 #show drop map 
 def fmap(data, lat, lon, zoom):
@@ -111,11 +88,14 @@ else:
 
 # FILTERING DATA BY HOUR SELECTED
 data = data[data[DATE_TIME].dt.hour == hour_selected]
-#data = data[(data[DATE_TIME]>start_date) & (data[DATE_TIME]<end_date)]
+st.write(data[DATE_TIME])
+data = data[(data[DATE_TIME]>=pd.to_datetime(start_date)) & (data[DATE_TIME]<=pd.to_datetime(end_date))]
 
 
 #get the location lat and lon use geoapi 
 location  = st.text_input("Location", "Manhattan")
+radius = st.number_input("Radius(Km)", value=1.)
+
 geolocator = Nominatim(user_agent="user_agent")
 location = geolocator.geocode(location)
 lon= location.longitude
@@ -123,7 +103,7 @@ lat = location.latitude
 data['dist']=list(map(lambda k: get_distance(data.loc[k]['pickup_longitude'],data.loc[k]['pickup_latitude'],lon,lat), data.index))
 
 #default is radius within 1km 
-hold  = data[data['dist'] < 0.2]
+hold  = data[data['dist'] < radius]
 
 if hold.shape[0] == 0:
     st.write("No_data")
@@ -133,7 +113,7 @@ else:
 st.write(data.shape)
 
 all_layers = {
-        "Bike Rentals": pdk.Layer(
+        "Hexagon": pdk.Layer(
             "HexagonLayer",
             data=data,
             get_position=["pickup_longitude","pickup_latitude"],
@@ -142,8 +122,15 @@ all_layers = {
             elevation_range=[0, 1000],
             extruded=True,
         ),
+        "Heatmap":  pdk.Layer(
+            "HeatmapLayer",
+            data = data,
+            opacity=0.9,
+            get_position=["pickup_longitude","pickup_latitude"],
+            aggregation='"MEAN"',
+            ),
  
-        "Outbound Flow":   pdk.Layer(
+        "show drop off":   pdk.Layer(
             "ArcLayer",
             data=data,
             get_source_position=["pickup_longitude","pickup_latitude"],
@@ -156,19 +143,17 @@ all_layers = {
             width_min_pixels=3,
             width_max_pixels=30,
         ),
+
     }
-layer =  [layer for layer_name, layer in all_layers.items()]
+st.sidebar.markdown('### Map Layers')
+layer =  [layer for layer_name, layer in all_layers.items() if st.sidebar.checkbox(layer_name, False)]
 # LAYING OUT THE MIDDLE SECTION OF THE APP WITH THE MAPS
 
 zoom_level = 12
 midpoint = (np.average(data["pickup_latitude"]), np.average(data["pickup_longitude"]))
 
 st.write("**All New York City from %i:00 and %i:00**" % (hour_selected, (hour_selected + 1) % 24))
-agree = st.checkbox('Show Drop off')
-if agree:
-    fmap(data, midpoint[0], midpoint[1], 12)
-else:   
-    dmap(data, midpoint[0], midpoint[1], 12)
+fmap(data, midpoint[0], midpoint[1], 12)
 
 
 
