@@ -16,14 +16,14 @@ DATE_TIME = "date/time"
 
 
 @st.cache(persist=True)
-def load_data(file, nrows):
-    data = pd.read_csv(file, nrows=nrows)
+def load_data(file):
+    data = pd.read_csv(file)
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase, axis="columns", inplace=True)
     data[DATE_TIME] = pd.to_datetime(data["pickup_datetime"])
     data["dropoff_datetime"]= pd.to_datetime(data["dropoff_datetime"])
     return data
-data = load_data("sampletrain.csv", 1000000)
+data = load_data("Sampled.csv")
 
 
 
@@ -123,6 +123,8 @@ st.write(data.shape)
 data['velo']  = list(map(lambda k: get_velocity(data.loc[k]['pickup_longitude'],data.loc[k]['pickup_latitude'],data.loc[k]['dropoff_longitude'],data.loc[k]['dropoff_latitude'],data.loc[k][DATE_TIME],data.loc[k]["dropoff_datetime"]),data.index))
 st.write("velocity")
 st.write(data['velo'])
+st.cache(persist=True)
+
 all_layers = {
         "Hexagon": pdk.Layer(
             "HexagonLayer",
