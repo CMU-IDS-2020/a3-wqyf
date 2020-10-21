@@ -21,6 +21,7 @@ def load_data(file, nrows):
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase, axis="columns", inplace=True)
     data[DATE_TIME] = pd.to_datetime(data["pickup_datetime"])
+    data["dropoff_datetime"]= pd.to_datetime(data["dropoff_datetime"])
     return data
 data = load_data("sampletrain.csv", 1000000)
 
@@ -42,6 +43,13 @@ def get_distance(lon1, lat1, lon2, lat2):
   c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
   return R * c
+
+#get the
+def get_velocity(lon1, lat1, lon2, lat2, start,end):
+    distance = get_distance(lon1, lat1, lon2, lat2)
+    velocity = 1000*distance/(end-start).total_seconds()
+    return velocity
+
 
 
 #show drop map 
@@ -111,6 +119,10 @@ else:
     data = hold
 st.write(data.shape)
 
+#velocity here 
+data['velo']  = list(map(lambda k: get_velocity(data.loc[k]['pickup_longitude'],data.loc[k]['pickup_latitude'],data.loc[k]['dropoff_longitude'],data.loc[k]['dropoff_latitude'],data.loc[k][DATE_TIME],data.loc[k]["dropoff_datetime"]),data.index))
+st.write("velocity")
+st.write(data['velo'])
 all_layers = {
         "Hexagon": pdk.Layer(
             "HexagonLayer",
