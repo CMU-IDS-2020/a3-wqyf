@@ -88,7 +88,6 @@ else:
 
 # FILTERING DATA BY HOUR SELECTED
 data = data[data[DATE_TIME].dt.hour == hour_selected]
-st.write(data[DATE_TIME])
 data = data[(data[DATE_TIME]>=pd.to_datetime(start_date)) & (data[DATE_TIME]<=pd.to_datetime(end_date))]
 
 
@@ -147,7 +146,7 @@ all_layers = {
     }
 st.sidebar.markdown('### Map Layers')
 layer =  [layer for layer_name, layer in all_layers.items() if st.sidebar.checkbox(layer_name, False)]
-# LAYING OUT THE MIDDLE SECTION OF THE APP WITH THE MAPS
+
 
 zoom_level = 12
 midpoint = (np.average(data["pickup_latitude"]), np.average(data["pickup_longitude"]))
