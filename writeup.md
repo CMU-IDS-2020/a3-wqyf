@@ -1,4 +1,7 @@
-# Project name
+# NYC Taxi Vz 
+Yifan Song  yifanson@andrew.cmu.edu
+
+Weiqin Wang weiqinw@andrew.cmu.edu 
 
 ![A screenshot of your application. Could be a GIF.](screenshot.png)
 
@@ -51,7 +54,7 @@ We are a highly collaborative team. After we picked the dataset, we carefully  d
 
 Weiqin was in charge of pre-processing data, interactive graphic design of path etc, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation.
 
-Yifan is in charge of color encoding of taxi path using velocity, dynamic filtering using date-time,  interactive graph animation, design and code structure refinement. 
+Yifan was in charge of color encoding of taxi path using velocity, dynamic filtering using date-time,  interactive graph animation, design and code structure refinement. 
 
 The most time-consuming part is to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allows us to better understand and find the best features to have for the tool.
 
