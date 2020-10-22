@@ -1,7 +1,7 @@
 # NYC Taxi Vz 
-Yifan Song  yifanson@andrew.cmu.edu
+Author: Yifan Song  yifanson@andrew.cmu.edu
 
-Weiqin Wang weiqinw@andrew.cmu.edu 
+        Weiqin Wang weiqinw@andrew.cmu.edu 
 
 ![A screenshot of your application. Could be a GIF.](screenshot.png)
 
