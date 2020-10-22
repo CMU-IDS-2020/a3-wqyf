@@ -25,10 +25,9 @@ Here the trade-off is whether the users will base on the date and then filter fo
 If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
 
 Date query range:
-We allow the users to specify specific date-time using calendar and hours-span using slider bar. The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
+We allow the users to specify specific date using calendar and hours-span using slider bar. The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different dates or different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
 
-We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to significantly larger query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  For example, query data from 2016/01/01 - 2016/01/31query all 200k rows at the same time. 
-
+We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
 
 Interaction techniques: 
 The users can choose two different map layers: HexagonLayer, Heat-map. They also have the option to show the path of pick-up and drop-off. 
