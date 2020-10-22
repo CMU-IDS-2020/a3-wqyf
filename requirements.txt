@@ -1,3 +1,11 @@
 streamlit
 pandas
 altair
+numpy
+pydeck
+math
+itertools
+time
+geopy
+datetime
+random
