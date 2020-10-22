@@ -1,4 +1,4 @@
-# NYC Taxi Vz 
+# NYC Taxi Viz 
 Author: 
 Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
