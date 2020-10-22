@@ -16,8 +16,9 @@ TODO: **A rationale for your design decisions.** How did you choose your particu
 
 Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
-The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location. 
+The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). When the users select a particular location with a radius, the map will be zoom to the location given radius. 
 Specify the date first can potentially greatly reduce the search space for location filtering.
+
 Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date. 
 If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
 
