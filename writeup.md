@@ -51,3 +51,6 @@ Weiqin was in charge of pre-processing data, interactive graphic design, dynamic
 Yifan is in charge of color encoding of taxi path using velocity, dynamic filtering using date-time, interactive graphic design, interactive graph animation,  and code structure optimization. 
 
 The most time-consuming part is to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allows us to better understand and find the best features to have for the tool.
+
+## References
+
