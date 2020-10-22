@@ -4,7 +4,7 @@ Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
 ![A screenshot of your application. Could be a GIF.](screenshot.png)
 
-TODO: Short abstract describing the main goals and how you achieved them.
+NYC Taxi Viz is a interactive data visualization framework that allows the users to explore the traffic flow of NYC taxi. Users can query for specific date, location and time range, as well as choose different types of map layers. The framework also provides the animation function to let users see the dynamic change of traffic flow across time.
 
 ## Project Goals
 
@@ -30,8 +30,8 @@ We allow the users to specify specific date using calendar and hours-span using 
 We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
 
 Interaction techniques: 
-The users can choose two different map layers: HexagonLayer, Heat-map to show the distribution. They also have the option to show the path from pick-up to drop-off. 
-We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time)) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
+The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
+We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
 Animation rational:
 We created the animation for the following reasons. 
