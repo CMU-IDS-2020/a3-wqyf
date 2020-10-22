@@ -36,9 +36,11 @@ We created the animation for the following reasons.
 1. Users can see the dynamic traffic flow given the specified location and time-span.
 2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
 
-We create two types of animation. 1. by hour-scale for the day 2. by the minute-scale for the user-specified time span.
-
+The animation is set to be 30fps of the 
 By hour allows the users to see the traffic flow for the day, so the users will have a general idea about the traffic flow. If the users see certain traffic flow during the hour need more close attention, they can choose to explore the traffic flow on a minute scale. 
+
+Other UI decision:
+We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
 
 ## Development
 
