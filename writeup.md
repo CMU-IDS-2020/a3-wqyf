@@ -44,9 +44,9 @@ By hour allows the users to see the traffic flow for the day, so the users will 
 
 TODO: **An overview of your development process.** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
 
-We are a highly collaborative team.
+We are a highly collaborative team.After we pick the dataset, we carefully  discussed  and determined the general objective.
 
-After we pick the dataset, we carefully  discussed  and determined the general objective.  Weiqin was in charge of pre-process data, interactive graphic design, dynamic filtering using date-time, location, interactive graph animation.
+Weiqin was in charge of pre-process data, interactive graphic design, dynamic filtering using date-time, location, interactive graph animation.
 
 Yifan is in charge of color encoding of taxi path using velocity, dynamic filtering using date-time, interactive graphic design, interactive graph animation,  and code structure optimization. 
 
