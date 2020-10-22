@@ -42,7 +42,7 @@ We created the animation for the following reasons.
 The animation is set to be 30fps generated from the selected time span.  
 The users can first see the traffic flow for the day to gain a general idea about the traffic flow. If the users see certain traffic flow during the hour need more close attention, they can choose to explore the traffic flow in detail using the time slider bar. 
 
-Other UI decision:
+Other UI decisions:
 We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
 
 ## Development
