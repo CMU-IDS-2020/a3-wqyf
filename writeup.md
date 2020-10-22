@@ -31,7 +31,7 @@ We have experimented with giving users different query choices. For example inst
 
 Interaction techniques: 
 The users can choose two different map layers: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
-We use the color of encoding to represent the estimated speed of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
+We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
 Animation rational:
 We created the animation for the following reasons. 
