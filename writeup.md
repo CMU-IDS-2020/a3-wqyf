@@ -36,7 +36,7 @@ We created the animation for the following reasons.
 1. Users can see the dynamic traffic flow given the specified location and time-span.
 2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
 
-We create two types of animation. 1. by hour-scale for the day 2. is by the minute-scale for the user-specified time span.
+We create two types of animation. 1. by hour-scale for the day 2. by the minute-scale for the user-specified time span.
 
 By hour allows the users to see the traffic flow for the day, so the users will have a general idea about the traffic flow. If the users see certain traffic flow during the hour need more close attention, they can choose to explore the traffic flow on a minute scale. 
 
