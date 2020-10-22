@@ -54,3 +54,6 @@ The most time-consuming part is to determine the most effective visual and inter
 
 ## References
 
+Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius
+
+
