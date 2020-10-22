@@ -46,7 +46,7 @@ TODO: **An overview of your development process.** Describe how the work was spl
 
 We are a highly collaborative team.After we pick the dataset, we carefully  discussed  and determined the general objective.
 
-Weiqin was in charge of pre-process data, interactive graphic design, dynamic filtering using date-time, location, interactive graph animation.
+Weiqin was in charge of pre-processing data, interactive graphic design, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation.
 
 Yifan is in charge of color encoding of taxi path using velocity, dynamic filtering using date-time, interactive graphic design, interactive graph animation,  and code structure optimization. 
 
