@@ -6,7 +6,7 @@ pydeck
 math
 itertools
 time
-geopy
+geopy-geocoders
 datetime
 random
 pipreqs
