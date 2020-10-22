@@ -8,10 +8,46 @@ TODO: Short abstract describing the main goals and how you achieved them.
 
 TODO: **A clear description of the goals of your project.** Describe the question that you are enabling a user to answer. The question should be compelling and the solution should be focused on helping users achieve their goals. 
 
+We aim to develop a tool that allows users to dynamically explore the traffic flow of NYC taxi by user specified date-time and locations.  The users can use the tool to answer the  question: given a specified pick-up location, how the traffic flow bandwidth and direction change overtime. 
+
 ## Design
 
 TODO: **A rationale for your design decisions.** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
 
+Query order:
+The users will specify the date, then the location, radius, and finally the hour span of the day. 
+The location and radius search is potentially time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location. 
+Specify the date can potentially greatly reduce the search space for location filtering.
+Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date. 
+If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
+
+Date query range:
+We allow the users to specify specific date-time using calendar and hours-span using slider bar. The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
+
+We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to significantly larger query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  For example, query data from 2016/01/01 - 2016/01/31query all 200k rows at the same time. 
+
+
+Interaction techniques: 
+The users can choose two different map layers: HexagonLayer, Heat-map. They also have the option to show the path of pick-up and drop-off. 
+We use the color of encoding to represent the estimated speed of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
+
+Animation rational:
+We created the animation for the following reasons. 
+1. Users can see the dynamic traffic flow given the specified location and time-span.
+2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
+
+We create two types of animation. 1. by hour-scale for the day 2. is by the minute-scale for the user-specified time span.
+
+By hour allows the users to see the traffic flow for the day, so the users will have a general idea about the traffic flow. If the users see certain traffic flow during the hour need more close attention, they can choose to explore the traffic flow on a minute scale. 
+
 ## Development
 
 TODO: **An overview of your development process.** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
+
+We are a highly collaborative team.
+
+After we pick the dataset, we carefully  discussed  and determined the general objective.  Weiqin was in charge of pre-process data, interactive graphic design, dynamic filtering using date-time, location, interactive graph animation.
+
+Yifan is in charge of color encoding of taxi path using velocity, dynamic filtering using date-time, interactive graphic design, interactive graph animation,  and code structure optimization. 
+
+The most time-consuming part is to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allows us to better understand and find the best features to have for the tool.
