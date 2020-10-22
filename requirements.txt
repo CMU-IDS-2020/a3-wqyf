@@ -6,6 +6,6 @@ pydeck
 math
 itertools
 time
-geopy.geocoders
+geopy-geocoders
 datetime
 random
