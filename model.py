@@ -23,6 +23,8 @@ def load_data():
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase, axis="columns", inplace=True)
     data[DATE_TIME] = pd.to_datetime(data["pickup_datetime"])
+    data["dropoff_datetime"]= pd.to_datetime(data["dropoff_datetime"])
+
     return data
 data = load_data()
 
@@ -66,25 +68,19 @@ Examining the traffic flow of NYC Yellow Taxi from 2016/01/01 - 2016/01/31
 You can spefcify the date, hour and location, radius. 
 """)
 
-
-
+# FILTERING DATA BY HOUR SELECTED
 start_date = st.date_input('Start date', datetime.date(2016,1,1))
-end_date = st.date_input('End date', datetime.date(2016,1,2))
+end_date =   datetime.date(2016,1,2)
 if start_date < end_date:
     st.success('Start date: `%s`\n\nEnd date:`%s`' % (start_date, end_date))
 else:
     st.error('Error: End date must fall after start date.')
-
-
-# FILTERING DATA BY HOUR SELECTED
 @st.cache()
 def load_time(data, start_date, end_date):
     rst = data[(data[DATE_TIME]>=pd.to_datetime(start_date)) & (data[DATE_TIME]<=pd.to_datetime(end_date))]
     return rst
 data = load_time(data, start_date, end_date)
-#data = data.copy()
-hour_selected = st.slider("Select hour of pickup", 0, 23)
-data = data[data[DATE_TIME].dt.hour == hour_selected]
+
 
 
 #get the location lat and lon use geoapi 
@@ -111,7 +107,24 @@ def load_geo(data, lon, lat, radius):
         data = hold
     return data
 data = load_geo(data, lon, lat, radius)
-data = data.copy()
+#data = data.copy()
+#get the
+def get_velocity(lon1, lat1, lon2, lat2, start,end):
+    distance = get_distance(lon1, lat1, lon2, lat2)
+    velocity = 1000*distance/(end-start).total_seconds()
+    return velocity
+data['velo']  = list(map(lambda k: get_velocity(data.loc[k]['pickup_longitude'],data.loc[k]['pickup_latitude'],data.loc[k]['dropoff_longitude'],data.loc[k]['dropoff_latitude'],data.loc[k][DATE_TIME],data.loc[k]["dropoff_datetime"]),data.index))
+
+
+
+
+
+#data = data.copy()
+hour_selected = st.slider("Select hour of pickup", 0, 23)
+data = data[data[DATE_TIME].dt.hour == hour_selected]
+
+
+
 
 st.write(data.shape)
 
@@ -123,7 +136,7 @@ hour_slider = st.empty()
 hour_text = st.empty()
 map = st.empty()
 st.sidebar.markdown('### Map Layers')
-layer_names =  [layer_name for layer_name in ["Hexagon", "Heatmap", "show drop off"] if st.sidebar.checkbox(layer_name, False)]
+layer_names =  [layer_name for layer_name in ["Hexagon", "Heatmap", "Path"] if st.sidebar.checkbox(layer_name, False)]
 
 
 
@@ -143,16 +156,16 @@ def fmap(data, lat, lon, zoom, layer_names):
             data=data,
             opacity=0.9,
             get_position=["pickup_longitude", "pickup_latitude"],
-            aggregation='"MEAN"',
+            aggregation='"SUM"',
         ),
 
-        "show drop off": pdk.Layer(
+        "Path": pdk.Layer(
             "ArcLayer",
             data=data,
             get_source_position=["pickup_longitude", "pickup_latitude"],
             get_target_position=["dropoff_longitude", "dropoff_latitude"],
-            get_source_color=[200, 30, 0, 160],
-            get_target_color=[200, 30, 0, 160],
+            get_source_color="[255- velo*255/12, velo*255/12, 10]",
+            get_target_color="[255- velo*255/12 , velo*255/12, 10]",
             auto_highlight=True,
             width_scale=0.00001,
             get_width="outbound",
