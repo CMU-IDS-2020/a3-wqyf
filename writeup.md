@@ -67,13 +67,13 @@ Each of us spent roughly 25 hours on the project.
 The most time-consuming part was to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allowed us to better understand and find the best features to have for the tool.
 
 ### Dataset
-We used the NYC Taxi Trip Duration dataset. The dataset origionally has 1458644 trip records of 2016 NYC Yellow Cab. For this project, we are particularlly interested in the trip-record of 2016/01/01 - 2016/01/31 the post-holiday month, so we resample the month January of the data which is 222038 records. 
+We used the NYC Taxi Trip Duration dataset. The dataset originally has 1458644 trip records of 2016 NYC Yellow Cab. For this project, we are particularly interested in the trip-record of 2016/01/01 - 2016/01/31 the post-holiday month, so we resample the month January of the data which is 222038 records.  
 
 ### Date and Location filtering 
-We allow the user to query base on the data and time. Given the users specified address, we use the geoapi to find the corresponding longitude and latitude. Then we find all pick-ups falls into the user-specified circle, where the center is user specified address.
+We allow the user to query base on the date and time. Given the user-specified address, we use the geo API to find the corresponding longitude and latitude. Then we find all pick-ups falls into the user-specified circle, where the center is a user-specified address.
 
 ### Animation and Color encoding
-We used the pick-up and drop-off location to find the displacement. Then given the displacement, we find the maximum speed, then we encode the Red and Green use the velocity by using 255- velo*255/maxvelo and velo*255/maxvelo. 
+We use the pick-up and drop-off locations to find the displacement. Then given the displacement, we find the speed, then we encode the Red and Green for the trip efficiency rate use the velocity by using 255- velo*255/maxvelo and velo*255/maxvelo. 
 # References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
