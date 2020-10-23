@@ -6,7 +6,7 @@ Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
 # Abstract
 
-NYC Taxi Viz is an interactive data visualization framework that allows the users to explore the traffic flow of NYC taxi. Users can query for specific date, location and time range, as well as choose different types of map layers. The framework also provides the animation function to let users see the dynamic change of traffic flow across time.
+NYC Taxi Viz is an interactive data visualization framework that allows the users to explore the traffic flow of NYC taxi. Users can query for specific date, location, pickup/dropoff and time range, as well as choose different types of map layers. The framework also provides the two animation functions to let users see the dynamic change of traffic flow across time.
 
 # Project Goals
 
