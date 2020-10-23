@@ -45,15 +45,17 @@ The zoom level is determined dynamically based on the query condition. When the 
 The users can choose two different map layers to show the data distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 
 ### Color Encoding 
-We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
+We use the continuous color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations(example: blue vs purple), and find out the green and red color encoding is most intuitive and clear. 
 
 ### Animation:
-We created the animation for the following reasons. 
+We created two types of animation cumulative and non-cumulative animation. The cumulative animation allows the users to see how the traffic is being added up by time while the non-cumulative animation allows the users to see how the traffic flow is changing over time.
+
+We created the animation for the following reason 
 1. Users can see the dynamic traffic flow given the specified location and time-span.
 2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
 
 The animation is set to be 30 frames generated from the selected time span.  
-The users can first see the traffic flow for the day to gain a general intutition. If the users see certain traffic flow during certain hours that need more close attention, they can choose to explore the traffic flow in detail using the time slider bar. 
+The users can first see the traffic flow for the day to gain a general intuition. If the users see certain traffic flow during certain hours that need more close attention, they can choose to explore the traffic flow in detail using the time slider bar. 
 
 # Development
 
