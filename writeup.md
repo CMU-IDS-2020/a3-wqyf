@@ -26,7 +26,7 @@ The query condition meets the objective for users to track traffic flow. The use
 
 We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
 ### Location 
-The users can specify the address and given the 
+The users can specify the address and radius to find the traffic flow of a given area. 
 
 ### Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
@@ -41,8 +41,8 @@ We plot the distribution of the traffic flow based on the user-specfied date.
 The zoom level is determined dynamically based on the query condition. When the user selects a particular location with a radius, the map will be zoomed to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
 
 
-### Interaction techniques: 
-The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
+### Interactive Graph: 
+The users can choose two different map layers to show the pick-up distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
 ### Animation:
