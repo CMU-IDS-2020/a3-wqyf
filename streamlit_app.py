@@ -49,11 +49,9 @@ row01, row02 = st.beta_columns([2,8])
 
 with row01:
     st.title("NYC Taxi Viz")
-with row02:
-    st.markdown('#### Examining the traffic flow of NYC Yellow Taxi for January 2016')
 
-st.markdown("### First query a specific date and location, then select one or more map type")
-st.markdown("### Now start playing around with the data!")
+st.markdown("### Examining the traffic flow of NYC Yellow Taxi for January 2016")
+
 
 # FILTERING DATA BY HOUR SELECTED
 start_date = st.date_input('Date', datetime.date(2016, 1, 1))
@@ -74,7 +72,7 @@ row11, row12 = st.beta_columns(2)
 with row11:
     location = st.text_input("Location", "Manhattan")
 with row12:
-    radius = st.number_input("Radius (mile)", value=1)
+    radius = st.number_input("Radius (mile)", value=1.)
 
 geolocator = Nominatim(user_agent="user_agent")
 location = geolocator.geocode(location)
@@ -202,7 +200,21 @@ def fmap(data, lat, lon, zoom, layer_names):
 
 timewindow = range(30)
 timestep = datetime.timedelta(hours = end_hour-start_hour+1) / 30
-zoom_level = 14
+if "Path" in layer_names:
+    zoom_level = 11
+else:
+    if radius <=0.5:
+        zoom_level = 15
+    elif radius >0.5 and radius <= 1.5 :
+        zoom_level = 14
+    elif radius >1.5 and radius < 3:
+        zoom_level = 13
+    elif radius >=3 and radius < 5:
+        zoom_level = 12
+    elif radius >=5 and radius < 10:
+        zoom_level = 11
+    else:
+        zoom_level = 10
 midpoint = (np.average(data["pickup_latitude"]), np.average(data["pickup_longitude"]))
 
 if animation_speed:
@@ -211,6 +223,8 @@ if animation_speed:
         end_time = datetime.datetime(2016,1,1,start_hour,0,0) + (i+1) * timestep
         hour_text.write("**Between " + str(start_time.time()) + " and " + str(end_time.time()) + "**")
         selected_data = data[(data[DATE_TIME].dt.time >= start_time.time()) & (data[DATE_TIME].dt.time < end_time.time())]
+
+
         fmap(selected_data, midpoint[0], midpoint[1], zoom_level, layer_names)
         time.sleep(animation_speed)
 else:

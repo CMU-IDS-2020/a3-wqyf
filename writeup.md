@@ -2,7 +2,7 @@
 Author: 
 Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
-![A screenshot of your application. Could be a GIF.](screenshot.png)
+![A screenshot of your application. Could be a GIF.](sc_taxi.png)
 
 ## Abstract
 
@@ -20,11 +20,9 @@ We aim to develop a tool that allows users to dynamically explore the traffic fl
 
 Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
-The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). When the users select a particular location with a radius, the map will be zoom to the location given radius. 
-Specify the date first can potentially greatly reduce the search space for location filtering.
+The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). 
 
-Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date. 
-If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
+Specify the date first can potentially greatly reduce the search space for location filtering. Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date.  If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
 
 Date query range:
 We allow the users to specify specific date using calendar and hours-span using slider bar. The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different dates or different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
@@ -33,6 +31,9 @@ We have experimented with giving users different query choices. For example inst
 
 Barchart: 
 We plot the distribution of the traffic flow based on the user-specfied date. 
+
+Zoom: 
+When the users select a particular location with a radius, the map will be zoom to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
 
 
 Interaction techniques: 
