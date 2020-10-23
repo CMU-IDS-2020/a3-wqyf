@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import time
 from itertools import cycle
 import streamlit as st
