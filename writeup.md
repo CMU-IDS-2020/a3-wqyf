@@ -60,13 +60,7 @@ The users can first see the traffic flow for the day to gain a general intuition
 # Development
 
 ### Overview 
-We are a highly collaborative team. After we picked the dataset, we carefully  discussed  and determined the general objective.
-
-Weiqin was in charge of pre-processing data, interactive graphic design of path etc, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation. 
-
-Yifan was in charge of color encoding of taxi path using velocity, dynamic filtering using date-time,  interactive graph animation, design and code structure refinement. 
-
-Each of us spent roughly 25 hours on the project. 
+We are a highly collaborative team. After we picked the dataset, we carefully  discussed  and determined the general objective.Weiqin was in charge of pre-processing data, interactive graphic design of path etc, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation. Yifan was in charge of color encoding of taxi path using velocity, dynamic filtering using date-time,  interactive graph animation, design and code structure refinement. Each of us spent roughly 25 hours on the project. 
 
 The most time-consuming part was to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allowed us to better understand and find the best features to have for the tool.
 
