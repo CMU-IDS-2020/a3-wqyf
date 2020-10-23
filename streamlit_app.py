@@ -170,8 +170,8 @@ def fmap(data, lat, lon, zoom, layer_names, latitude, longitude):
             data=data,
             get_position=[longitude, latitude],
             auto_highlight=True,
-            get_radius=50,
-            get_fill_color='[180, 0, 200, 1000]',
+            get_radius=40,
+            get_fill_color='[180, 0, 200, 200]',
             pickable=True), 
 
         "Heatmap": pdk.Layer(
