@@ -26,7 +26,7 @@ The query condition meets the objective for users to track traffic flow. The use
 
 We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
 ### Location 
-The users can specify the pick-up and drop-off address and radius to find the traffic flow of a given area. 
+The users can specify the pick-up, drop-off address and radius to find the traffic flow of a given area. 
 
 ### Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
