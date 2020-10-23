@@ -42,7 +42,7 @@ The zoom level is determined dynamically based on the query condition. When the 
 
 
 ### Interactive Graph: 
-The users can choose two different map layers to show the data distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
+The users can choose two different map layers to show the data distribution: Scatter, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 
 ### Color Encoding 
 We use the continuous color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations(example: blue vs purple), and find out the green and red color encoding is most intuitive and clear. 
