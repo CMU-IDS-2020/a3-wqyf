@@ -1,5 +1,5 @@
 # NYC Taxi Viz 
-Author: 
+Authors: 
 Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
 ![A screenshot of your application. Could be a GIF.](sc_taxi.png)
