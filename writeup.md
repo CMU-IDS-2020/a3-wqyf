@@ -26,7 +26,7 @@ The query condition meets the objective for users to track traffic flow. The use
 
 We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
 ### Location 
-The users can specify the address and radius to find the traffic flow of a given area. 
+The users can specify the pick-up and drop-off address and radius to find the traffic flow of a given area. 
 
 ### Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
@@ -48,7 +48,7 @@ The users can choose two different map layers to show the data distribution: Hex
 We use the continuous color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations(example: blue vs purple), and find out the green and red color encoding is most intuitive and clear. 
 
 ### Animation:
-We created two types of animation cumulative and non-cumulative animation. The cumulative animation allows the users to see how the traffic is being added up by time while the non-cumulative animation allows the users to see how the traffic flow is changing over time.
+We created two types of animation cumulative and non-cumulative animation. The cumulative animation allows the users to see how the traffic is being added up by time while the non-cumulative animation allows the users to see how the traffic flow is changing over time. Here the users can see the animation of pick-up, drop-off, path, or all of them above.
 
 We created the animation for the following reason 
 1. Users can see the dynamic traffic flow given the specified location and time-span.
@@ -63,7 +63,7 @@ The users can first see the traffic flow for the day to gain a general intuition
 We are a highly collaborative team. After we picked the dataset, we carefully  discussed  and determined the general objective.Weiqin was in charge of pre-processing data, interactive graphic design of path etc, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation. Yifan was in charge of color encoding of taxi path using velocity, dynamic filtering using date-time,  interactive graph animation, design and code structure refinement. Each of us spent roughly 25 hours on the project. 
 
 The most time-consuming part was to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allowed us to better understand and find the best features to have for the tool.
-
+We briefly cover the implementation in the secitons below. 
 ### Dataset
 We used the NYC Taxi Trip Duration dataset. The dataset originally has 1458644 trip records of 2016 NYC Yellow Cab. For this project, we are particularly interested in the trip-record of 2016/01/01 - 2016/01/31 the post-holiday month, so we resample the month January of the data which is 222038 records.  
 
