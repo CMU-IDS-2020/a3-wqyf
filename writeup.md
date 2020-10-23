@@ -18,7 +18,7 @@ We aim to develop a tool that allows users to dynamically explore the traffic fl
 
 **A rationale for your design decisions.** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
 
-## Hour Slider Bars:
+### Hour Slider Bars:
 We allow the users to specify specific date using calendar and hours-span using slider bar. We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
 
 ## Date query range:
