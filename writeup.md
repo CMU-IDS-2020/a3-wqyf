@@ -8,7 +8,7 @@ Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
 NYC Taxi Viz is an interactive data visualization framework that allows the users to explore the traffic flow of NYC taxi. Users can query for specific date, location and time range, as well as choose different types of map layers. The framework also provides the animation function to let users see the dynamic change of traffic flow across time.
 
-## Project Goals
+# Project Goals
 
 Describe the question that you are enabling a user to answer. The question should be compelling and the solution should be focused on helping users achieve their goals. 
 
@@ -28,24 +28,24 @@ We have experimented with giving users different query choices. For example inst
 ### Location 
 The users can specify the address and given the 
 
-## Query order:
+### Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
-The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). 
+The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the address, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). 
 
 Specify the date first can potentially greatly reduce the search space for location filtering. Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date.  If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
 
-## Barchart: 
+### Barchart: 
 We plot the distribution of the traffic flow based on the user-specfied date. 
 
-## Zoom: 
+### Zoom: 
 The zoom level is determined dynamically based on the query condition. When the user selects a particular location with a radius, the map will be zoomed to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
 
 
-## Interaction techniques: 
+### Interaction techniques: 
 The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
-## Animation:
+### Animation:
 We created the animation for the following reasons. 
 1. Users can see the dynamic traffic flow given the specified location and time-span.
 2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
@@ -69,6 +69,11 @@ The most time-consuming part was to determine the most effective visual and inte
 ### Dataset
 We used the NYC Taxi Trip Duration dataset. The dataset origionally has 1458644 trip records of 2016 NYC Yellow Cab. For this project, we are particularlly interested in the trip-record of 2016/01/01 - 2016/01/31 the post-holiday month, so we resample the month January of the data which is 222038 records. 
 
+### Date and Location filtering 
+We allow the user to query base on the data and time. Given the users specified address, we use the geoapi to find the corresponding longitude and latitude. Then we find all pick-ups falls into the user-specified circle, where the center is user specified address.
+
+### Animation and Color encoding
+We used the pick-up and drop-off location to find the displacement. Then given the displacement, we find the maximum speed, then we encode the Red and Green use the velocity by using 255- velo*255/maxvelo and velo*255/maxvelo. 
 # References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
