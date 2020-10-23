@@ -68,6 +68,6 @@ The most time-consuming part was to determine the most effective visual and inte
 ## References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
-Mapbased interaction: https://github.com/streamlit/demo-uber-nyc-pickups/blob/master/streamlit_app.py
+Map layers: https://github.com/streamlit/demo-uber-nyc-pickups/blob/master/streamlit_app.py
 
 
