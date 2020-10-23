@@ -42,7 +42,9 @@ The zoom level is determined dynamically based on the query condition. When the 
 
 
 ### Interactive Graph: 
-The users can choose two different map layers to show the pick-up distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
+The users can choose two different map layers to show the data distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
+
+### Color Encoding 
 We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
 ### Animation:
@@ -75,7 +77,12 @@ We allow the user to query base on the date and time. Given the user-specified a
 ### Animation and Color encoding
 We use the pick-up and drop-off locations to find the displacement. Then given the displacement, we find the speed, then we encode the Red and Green for the trip efficiency rate use the velocity by using 255- velocity\*255/maxvelocity and velo \* 255/maxvelocity. 
 
-Animation is acheived through dynamic query. Given a set of time span, the traffic flow will be evenly split into 30 sub-pieces. 
+Animation is acheived through dynamic query. Given a set of time span, the traffic flow will be evenly split into 30 sub-pieces.
+The cumulative animation is achieved by fixing the start point of the date-time and dynamically moving the end point. Non-cumulative is achieved by dynamically moving both start and end point. 
+
+### Interactive Graphic
+We use pydeck to implement different layers of the graphs. We use the sidebar radio(mutually exclusive) to determine either show drop-off or pick-up. 
+
 # References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
