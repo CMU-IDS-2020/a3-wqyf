@@ -18,38 +18,39 @@ We aim to develop a tool that allows users to dynamically explore the traffic fl
 
 **A rationale for your design decisions.** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
 
-Query order:
+## Hour Slider Bars:
+We allow the users to specify specific date using calendar and hours-span using slider bar. We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
+
+## Date query range:
+The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different dates or different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
+
+We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
+# Location 
+
+## Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
 The location and radius search is potentially expensive and time-consuming. The user will first input a location, then given the location longitude and latitude, we determine all the pick-ups within the radius of the location.  The users can specify the radius to determine the information(detail on demand). 
 
 Specify the date first can potentially greatly reduce the search space for location filtering. Here the trade-off is whether the users will base on the date and then filter for the location or base on the location and filter for the date.  If for the latter,  the location filter should be conducted first to optimize the query speed.  We implemented in both orders and decided to use the first date then the location approach and the hours. We believe the interface provides the best usability. Additionally, the interface allows users to first determine a date and location,  then use the slider bar to explore the hourly traffic flow. 
 
-Date query range:
-We allow the users to specify specific date using calendar and hours-span using slider bar. The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different dates or different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
-
-We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
-
-Barchart: 
+## Barchart: 
 We plot the distribution of the traffic flow based on the user-specfied date. 
 
-Zoom: 
+## Zoom: 
 The zoom level is determined dynamically based on the query condition. When the user selects a particular location with a radius, the map will be zoomed to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
 
 
-Interaction techniques: 
+## Interaction techniques: 
 The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
-Animation rational:
+## Animation:
 We created the animation for the following reasons. 
 1. Users can see the dynamic traffic flow given the specified location and time-span.
 2. When the query results are large, the pick-up and drop-off path become intractable for users, so the animation can help breakdown the traffic flow in a mini-scale. 
 
 The animation is set to be 30 frames generated from the selected time span.  
 The users can first see the traffic flow for the day to gain a general intutition. If the users see certain traffic flow during certain hours that need more close attention, they can choose to explore the traffic flow in detail using the time slider bar. 
-
-Other UI decisions:
-We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
 
 ## Development
 
