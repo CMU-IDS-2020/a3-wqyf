@@ -21,11 +21,12 @@ We aim to develop a tool that allows users to dynamically explore the traffic fl
 ### Hour Slider Bars:
 We allow the users to specify specific date using calendar and hours-span using slider bar. We have two slider bars for users to choose the start and end hours of the day(dynamic query). We have tried with other user input interfaces such as textbox, but the slider bar allows the users to have a better interaction experience.
 
-## Date query range:
+### Date query range:
 The query condition meets the objective for users to track traffic flow. The users can clearly see the traffic flow for different dates or different hours. For example, the difference of traffic flow between morning time 8:00 am vs night time 11:00 pm or weekdays vs weekends. 
 
 We have experimented with giving users different query choices. For example instead of a specific date, the users can choose a range of days. However, the query choice leads to very large overplot query results which are mostly meaningless from the users' perspective and very expensive for Streamlight to render.  Therefore, we choose to allow users to only query on a specific date. 
-# Location 
+### Location 
+The users can specify the address and given the 
 
 ## Query order:
 The users will specify the date, then the location, radius, and finally the hour span of the day. 
@@ -54,8 +55,7 @@ The users can first see the traffic flow for the day to gain a general intutitio
 
 # Development
 
-**An overview of your development process.** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
-
+### Overview 
 We are a highly collaborative team. After we picked the dataset, we carefully  discussed  and determined the general objective.
 
 Weiqin was in charge of pre-processing data, interactive graphic design of path etc, dynamic filtering using date-time, location,velocity calcuation, interactive graph animation. 
@@ -66,7 +66,10 @@ Each of us spent roughly 25 hours on the project.
 
 The most time-consuming part was to determine the most effective visual and interactive design so that the audiences can better use our tool.  For example, we have tried to alter the query order, color encoding, layers of map. The experiments were very time-consuming, but it allowed us to better understand and find the best features to have for the tool.
 
-## References
+### Dataset
+We used the NYC Taxi Trip Duration dataset. The dataset origionally has 1458644 trip records of 2016 NYC Yellow Cab. For this project, we are particularlly interested in the trip-record of 2016/01/01 - 2016/01/31 the post-holiday month, so we resample the month January of the data which is 222038 records. 
+
+# References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
 Map layers(given in class): https://github.com/streamlit/demo-uber-nyc-pickups/blob/master/streamlit_app.py
