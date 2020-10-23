@@ -4,7 +4,7 @@ Yifan Song(yifanson@cmu) & Weiqin Wang(weiqinw@cmu)
 
 ![A screenshot of your application. Could be a GIF.](Streamlit.gif)
 
-## Abstract
+# Abstract
 
 NYC Taxi Viz is an interactive data visualization framework that allows the users to explore the traffic flow of NYC taxi. Users can query for specific date, location and time range, as well as choose different types of map layers. The framework also provides the animation function to let users see the dynamic change of traffic flow across time.
 
@@ -14,7 +14,7 @@ Describe the question that you are enabling a user to answer. The question shoul
 
 We aim to develop a tool that allows users to dynamically explore the traffic flow of NYC taxi by user specified date-time and locations.  The users can use the tool to answer the  question: given a specified pick-up location, how the traffic flow bandwidth and direction change overtime. 
 
-## Design
+# Design
 
 **A rationale for your design decisions.** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
 
@@ -52,7 +52,7 @@ We created the animation for the following reasons.
 The animation is set to be 30 frames generated from the selected time span.  
 The users can first see the traffic flow for the day to gain a general intutition. If the users see certain traffic flow during certain hours that need more close attention, they can choose to explore the traffic flow in detail using the time slider bar. 
 
-## Development
+# Development
 
 **An overview of your development process.** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
 
