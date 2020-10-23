@@ -37,7 +37,7 @@ The zoom level is determined dynamically based on the query condition. When the 
 
 
 Interaction techniques: 
-The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map to see the data distribution. They also have the option to show the path from pick-up to drop-off. 
+The users can choose two different map layers to show the distribution: HexagonLayer, Heat-map. They also have the option to show the path from pick-up to drop-off. 
 We use the color of encoding to represent the estimated speed(using the great circle distance/(pickup time - dropoff time) of the traffic flow, where more green means higher speed and more red means lower speed.  We have experimented with different color encoding combinations, and find out the green and red color encoding is most intuitive and clear. 
 
 Animation rational:
