@@ -33,7 +33,7 @@ Barchart:
 We plot the distribution of the traffic flow based on the user-specfied date. 
 
 Zoom: 
-When the users select a particular location with a radius, the map will be zoom to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
+The zoom level is determined dynamically based on the query condition. When the user selects a particular location with a radius, the map will be zoomed to the location given radius range. When the show path option is chosen, the zoom will be set 11 to allow users to clearly see the traffic flow.
 
 
 Interaction techniques: 
