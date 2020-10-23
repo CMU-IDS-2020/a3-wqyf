@@ -73,7 +73,7 @@ We used the NYC Taxi Trip Duration dataset. The dataset originally has 1458644 t
 We allow the user to query base on the date and time. Given the user-specified address, we use the geo API to find the corresponding longitude and latitude. Then we find all pick-ups falls into the user-specified circle, where the center is a user-specified address.
 
 ### Animation and Color encoding
-We use the pick-up and drop-off locations to find the displacement. Then given the displacement, we find the speed, then we encode the Red and Green for the trip efficiency rate use the velocity by using 255- velocity \*255/maxvelocity and velo \* 255/maxvelocity. 
+We use the pick-up and drop-off locations to find the displacement. Then given the displacement, we find the speed, then we encode the Red and Green for the trip efficiency rate use the velocity by using 255- velocity\*255/maxvelocity and velo \* 255/maxvelocity. 
 # References
 
 Calculation for location based search: https://stackoverflow.com/questions/58548566/selecting-rows-in-geopandas-or-pandas-based-on-latitude-longitude-and-radius  <br />
